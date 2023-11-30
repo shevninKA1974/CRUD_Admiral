@@ -121,7 +121,7 @@ export const TablePerson = (props: TableProps) => {
         setCols(newCols);
     };
 
-    function deleteRow(personId, rowId) {
+    function deleteRow(personId) {
         console.log('Удаляем tabNum=' + personId);
         fetch("./api/delete/" + personId)
             .then(response => {
@@ -130,10 +130,10 @@ export const TablePerson = (props: TableProps) => {
             })
             .then(data => {
                 let clonePerson = [];
-                let j=0;
-                for (var i = 0; i < person.length; i++)
-                    if (i != rowId) clonePerson[j++] = person[i];
-                console.log('Удалён => ' + rowId + " из " + person.length);
+                let j= person.findIndex(inst => inst.tabNum.props.children == personId);
+                person.splice(j,1);
+                for (var i = 0; i < person.length; i++) clonePerson[i] = person[i];
+                console.log('Удалён => ' + personId);
                 setDataPerson(clonePerson);
             })
             .catch((response) => {
@@ -141,7 +141,7 @@ export const TablePerson = (props: TableProps) => {
             })
     }
 
-     function SetRow(pPerson, rowId) {
+     function SetRow(pPerson) {
         const lTabNum = pPerson.tabNum;
         const lSName = pPerson.sName;
         const lName = pPerson.name;
@@ -154,7 +154,7 @@ export const TablePerson = (props: TableProps) => {
             setEditor(true);
             setOpened(true);
         }}>{pPerson.tabNum}</Link>
-        pPerson.action = <Link><DeleteOutline width={20} onClick={() => deleteRow(lTabNum, rowId)}/></Link>
+        pPerson.action = <Link><DeleteOutline width={20} onClick={() => deleteRow(lTabNum)}/></Link>
     }
 
     function changeRow(pAction, pTabNum, pSName, pName, pFName) {
@@ -178,7 +178,7 @@ export const TablePerson = (props: TableProps) => {
                 for (var i = 0; i < person.length; i++) {
                     if (person[i].tabNum.props.children == onePerson.tabNum) {
                         person[i] = onePerson;
-                        SetRow(person[i], i);
+                        SetRow(person[i]);
                         used = true;
                         console.log('Сохранили состояние name');
                     }
@@ -186,7 +186,7 @@ export const TablePerson = (props: TableProps) => {
                 }
                 if (!used) {
                     clonePerson[person.length] = onePerson;
-                    SetRow(clonePerson[person.length], person.length);
+                    SetRow(clonePerson[person.length]);
                     person[person.length] = clonePerson[person.length];
                 }
                 setDataPerson(clonePerson);
@@ -207,7 +207,7 @@ export const TablePerson = (props: TableProps) => {
             .then(data => {
                 person = JSON.parse(data);
                 //let person = JSON.parse('[{"tabNum": "226102","name": "Константин","fName": "Аркадьевич","sName": "Шевнин"},{"tabNum": "333","name": "Андрей","fName": "Егорович","sName": "Тестов"}]');
-                for (var i = 0; i < person.length; i++) SetRow(person[i], i);
+                for (var i = 0; i < person.length; i++) SetRow(person[i]);
                 setDataPerson(person);
                 console.log('Отрисовали таблицу');
             })

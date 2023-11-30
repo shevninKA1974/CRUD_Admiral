@@ -47,7 +47,7 @@ public class HibernateConfig {
     public LocalSessionFactoryBean sessionFactory() {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource());
-        sessionFactory.setPackagesToScan("com.demo.model");
+        sessionFactory.setPackagesToScan("ru.kshevnin.model");
         sessionFactory.setHibernateProperties(hibernateProperties());
         return sessionFactory;
     }
