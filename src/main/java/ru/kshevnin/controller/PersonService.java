@@ -1,7 +1,7 @@
 package ru.kshevnin.controller;
 
-import com.demo.model.Person;
-import com.demo.model.PersonDAO;
+import ru.kshevnin.model.Person;
+import ru.kshevnin.model.PersonDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

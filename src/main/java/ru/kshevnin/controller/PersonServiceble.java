@@ -1,6 +1,6 @@
 package ru.kshevnin.controller;
 
-import com.demo.model.Person;
+import ru.kshevnin.model.Person;
 
 import java.util.List;
 

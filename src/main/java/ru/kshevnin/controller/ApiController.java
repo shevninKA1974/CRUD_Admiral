@@ -1,6 +1,6 @@
 package ru.kshevnin.controller;
 
-import com.demo.model.Person;
+import ru.kshevnin.model.Person;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;

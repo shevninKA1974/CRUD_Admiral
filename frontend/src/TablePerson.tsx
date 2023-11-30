@@ -200,14 +200,22 @@ export const TablePerson = (props: TableProps) => {
 
      useEffect(() => {
         fetch("./api/dataPerson")
-            .then(response => response.text())
+            .then(response => {
+                if (response.ok) { return response.text(); }
+                return Promise.reject(response);
+            })
             .then(data => {
                 person = JSON.parse(data);
                 //let person = JSON.parse('[{"tabNum": "226102","name": "Константин","fName": "Аркадьевич","sName": "Шевнин"},{"tabNum": "333","name": "Андрей","fName": "Егорович","sName": "Тестов"}]');
                 for (var i = 0; i < person.length; i++) SetRow(person[i], i);
                 setDataPerson(person);
                 console.log('Отрисовали таблицу');
-            });
+            })
+            .catch((response) => {
+                response.json().then((json: any) => {
+                    alert(json.message);
+                })
+            })
     }, [])
 
     return (

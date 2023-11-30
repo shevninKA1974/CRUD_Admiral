@@ -35,7 +35,7 @@ npm install
 ![npm commands](https://github.com/seanpolid/spring-react-vite-images/blob/main/npm-commands.png?raw=true)
 
 
-5. Open the vite.config.js file in the frontend folder and specify the outDir so it points to our static resources folder:
+5. Open the vite.config.ts file in the frontend folder and specify the outDir so it points to our static resources folder:
 
 ![vite config](https://github.com/seanpolid/spring-react-vite-images/blob/main/vite-config.png?raw=true)
 
@@ -46,15 +46,15 @@ npm install
 7. While you're in the frontend folder (terminal), run the following command:
 <blockquote>npm run watch</blockquote>
 
-8. Edit the App.jsx file in the frontend/src folder and save. <br/>
+8. Edit the App.tsx file in the frontend/src folder and save. <br/>
 
 9. Refresh your project and look in src/main/resources/static. You should see an index.html file and an assets folder (confirming that vite is now tracking our changes).
 
-Pre App.jsx edit:
+Pre App.tsx edit:
 
 ![static folder before](https://github.com/seanpolid/spring-react-vite-images/blob/main/resources-before.png?raw=true)
 
-Post App.jsx edit:
+Post App.tsx edit:
 
 ![static folder after](https://github.com/seanpolid/spring-react-vite-images/blob/main/resources-after.png?raw=true)
 
