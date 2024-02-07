@@ -19,7 +19,7 @@ cd frontend
 <br>
 npm install
 <br>
-npm reun watch
+npm run watch
 </code>
 <br>
 <br>
